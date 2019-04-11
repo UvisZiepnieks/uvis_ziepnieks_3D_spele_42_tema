@@ -3,13 +3,21 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+
+
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
+
     public class FirstPersonController : MonoBehaviour
     {
+        private int heartbeat;
+        public Text heartbeattext;
+        public Text GameEnder;
+        
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -55,6 +63,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            heartbeat = 85;
+            SetHeartBeatText();
+           
         }
 
 
@@ -255,5 +266,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Minus_Pill"))
+            {
+                other.gameObject.SetActive(false);
+                heartbeat = heartbeat - 20;
+                SetHeartBeatText();
+                
+            }
+            if (other.gameObject.CompareTag("Plus_Pill"))
+            {
+                other.gameObject.SetActive(false);
+                heartbeat = heartbeat + 20;
+                SetHeartBeatText();
+   
+            }
+        }
+        void SetHeartBeatText()
+        {
+            heartbeattext.text = "Heart Beat: " + heartbeat.ToString();
+            if (heartbeat > 156)
+            {
+                GameEnder.text = "YOU DIED!";
+                Time.timeScale = 0;
+               
+
+
+
+
+            }
+            if (heartbeat < 40)
+            {
+                GameEnder.text = "YOU DIED!";
+                Time.timeScale = 0;
+
+
+            }
+        }
+      
+
     }
-}
+    }
+
