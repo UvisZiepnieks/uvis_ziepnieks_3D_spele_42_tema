@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Minus_Pill
   - Plus_Pill
+  - Waypoint
+  - Spotlight
+  - Battery
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Player
+  - Maze
   - 
   - 
   - 
