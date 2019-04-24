@@ -792,6 +792,10 @@ PrefabInstance:
       propertyPath: batterytext
       value: 
       objectReference: {fileID: 1033860687}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 688642192}
     - target: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.052
@@ -2865,6 +2869,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1816803354, guid: 67756f2d9e1dee147b061683fa390d8e, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 324745931}
     - target: {fileID: 1816803351, guid: 67756f2d9e1dee147b061683fa390d8e, type: 3}
       propertyPath: waypoints.Array.size
       value: 0
@@ -2885,9 +2893,5 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1868650850}
-    - target: {fileID: 1816803354, guid: 67756f2d9e1dee147b061683fa390d8e, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 324745931}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67756f2d9e1dee147b061683fa390d8e, type: 3}

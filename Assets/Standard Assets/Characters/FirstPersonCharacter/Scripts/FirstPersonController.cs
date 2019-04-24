@@ -26,8 +26,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Text batteriestext;
         public Text batterytext;
         public Text GameEnder;
-        private float presedShiftInTime = 0;
-        public float slowButonsPressed = 3;
+        public GameObject light;
+        float counter = 0;
+        float counter2 = 0;
+        float counter3 = 0;
 
 
         [SerializeField] private bool m_IsWalking;
@@ -91,8 +93,45 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-         
-            if (Input.GetKeyDown(KeyCode.E))
+            counter += Time.deltaTime;
+            counter2 += Time.deltaTime;
+            counter3 += Time.deltaTime;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+               
+
+                if (counter >= 1)
+                {
+                    //Increment Speed by 4
+                    incrementSpeed();
+
+                    //RESET Counter
+                    counter = 0;
+                }
+            }
+
+
+            if (counter2 >= 5)
+            {
+                //Increment Speed by 4
+                incrementSpeed2();
+
+                //RESET Counter
+                counter2 = 0;
+            }
+            if (light.activeInHierarchy == true)
+            {
+                if (counter3 >= 5)
+                {
+                    //Increment Speed by 4
+                    incrementSpeed3();
+
+                    //RESET Counter
+                    counter3 = 0;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 if (minuspill > 0)
                 {
@@ -102,7 +141,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     SetHeartBeatText();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.X))
             {
 
                 if (pluspill > 0)
@@ -113,17 +152,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     SetHeartBeatText();
                 }
             }
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 if (batteries > 0)
                 {
                     batteries = batteries - 1;
                     batteryhealth = 100;
                     setBatteriestext();
-                    SetHeartBeatText();
+                    setBatteryHealthtext();
                 }
                
             }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+               
+                if (light.activeInHierarchy == true)
+                {
+                    light.SetActive(false);
+
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                if (light.activeInHierarchy == false)
+                {
+                    light.SetActive(true);
+
+                }
+            }
+
 
             RotateView();
             // the jump state needs to read here to make sure it is not missed
@@ -363,6 +420,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
         }
+        void incrementSpeed()
+        {
+            if(heartbeat > 40 && heartbeat < 85)
+            {
+                heartbeat += 5;
+            }
+            if (heartbeat >= 85 && heartbeat < 120)
+            {
+                heartbeat += 3;
+            }
+            if (heartbeat >= 120)
+            {
+                heartbeat += 5;
+            }
+
+            SetHeartBeatText();
+        }
+        void incrementSpeed2()
+        {
+            if (heartbeat > 40 && heartbeat < 60)
+            {
+                heartbeat += 3;
+            }
+            if (heartbeat >= 85 && heartbeat < 120)
+            {
+                heartbeat += 1;
+            }
+            if (heartbeat >= 120)
+            {
+                heartbeat = heartbeat - 1;
+            }
+
+            SetHeartBeatText();
+        }
+        void incrementSpeed3()
+        {
+            batteryhealth -= 1;
+
+            setBatteryHealthtext();
+        }
         void setMinusPillText()
         {
             minuspilltext.text = "Minus Pill: " + minuspill.ToString();
@@ -379,7 +476,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             batterytext.text = "Battery Life: " + batteryhealth.ToString();
         }
-        
+      
     }
 }
 
