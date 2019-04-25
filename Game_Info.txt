@@ -1,0 +1,5 @@
+Sâkotnçjâ ideja bija, ka spçlçtâjs skraida pa mâju un mçìina izbçgt no zombija, bet ideja par labirintu likâs labâka.
+
+Spçles mçríis ir izbçgt no labirinta.
+Spçles kontroles: W,A,S,D - kustîba, g un h kontrolç flashlight, Z- paòem plus tableti, X- mînus tableti, C-Ieliek jaunu bateriju.
+Spçles laikâ ir jâkontrolç sirds darbîba un flashlight dzîvîba.
