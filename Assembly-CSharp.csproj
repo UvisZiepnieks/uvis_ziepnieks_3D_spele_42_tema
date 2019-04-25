@@ -70,6 +70,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Script\Chase.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\menuplay.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <None Include="Assets\Day-Night Skyboxes\readme.txt" />
     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />

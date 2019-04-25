@@ -180,7 +180,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 }
             }
-
+            if (batteryhealth < 1)
+            {
+                light.SetActive(false);
+            }
+            
 
             RotateView();
             // the jump state needs to read here to make sure it is not missed
@@ -401,6 +405,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 batteries = batteries + 1;
                 setBatteriestext();
 
+            }
+            if (other.gameObject.CompareTag("Finish"))
+            {
+                GameEnder.text = "YOU ESCAPED!";
             }
         }
         void SetHeartBeatText()
